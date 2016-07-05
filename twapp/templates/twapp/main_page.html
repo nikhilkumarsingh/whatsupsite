@@ -1,0 +1,14 @@
+{% extends "base.html" %}
+
+{% block head%}Home{% endblock %}
+
+{% block content %}
+<p>{{mask}}</p>
+<img  id="title" src="/static/other/heading2.png "   alt=TWEESTER >
+
+<form id="searchbox" method="get" action="/search/">
+    <input id="search" type="text" placeholder="Type here" name="query">
+    <input id="submit" type="submit" value="Search">
+</form>
+
+{% endblock %}

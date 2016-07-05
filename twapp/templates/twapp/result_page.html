@@ -1,0 +1,16 @@
+{% extends "base.html" %} 
+{% load staticfiles%}
+
+{% block head %}Result{% endblock %}
+{% block content %}
+
+ <img id="result" src="{% static url %} "   alt={{query}} >
+ 
+<div id="options">
+  <a href="{% static url %} "  download="myimage.png">
+  <img id="download" src="/static/other/dbutton2.png "   alt=Download  ></a>
+  <a href="/" ><img id="goback" src="/static/other/goback.png "   alt=Go back  ></a>
+</div>  
+
+
+{% endblock %}

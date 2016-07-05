@@ -1,0 +1,14 @@
+{% extends "base.html" %}
+{% load staticfiles %}
+
+
+{% block content %}
+<table>
+<tr>
+{% for mask in masks %}
+<td><a href ="/setmask/{{mask}}/"><img id="mask" src="/static/masks/{{mask}}.png/" ></a></td>
+{% endfor %}
+</tr>
+</table>
+
+{% endblock %}
