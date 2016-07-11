@@ -1,0 +1,129 @@
+{% extends 'base.html' %}
+{% block head%}Videos{% endblock %}
+{% block style %}
+#videos {
+    margin: 20 auto;
+    font-family: "Trebuchet MS", Arial, Helvetica, sans-serif;
+    border-collapse: collapse;
+    width: 70%;
+}
+
+#videos td {
+    border: 1px solid #ddd;
+    padding: 8px;
+}
+
+#videos tr{background-color: #f2f2f2;}
+
+#videos tr:hover {background-color: #ddd;}
+
+
+.button {
+  float:right;
+  display: inline-block;
+  height: 25px;
+  line-height: 20px;
+  padding-right: 15px;
+  padding-left: 15px;
+  position: relative;
+  background-color:rgb(41,127,184);
+  color:rgb(255,255,255);
+  text-decoration: none;
+  text-transform: uppercase;
+  
+  
+  border-radius: 5px;
+  -moz-border-radius: 5px;
+  -webkit-border-radius: 5px;
+  text-shadow:0px 1px 0px rgba(0,0,0,0.5);
+-ms-filter:"progid:DXImageTransform.Microsoft.dropshadow(OffX=0,OffY=1,Color=#ff123852,Positive=true)";zoom:1;
+filter:progid:DXImageTransform.Microsoft.dropshadow(OffX=0,OffY=1,Color=#ff123852,Positive=true);
+
+  -moz-box-shadow:0px 2px 2px rgba(0,0,0,0.2);
+  -webkit-box-shadow:0px 2px 2px rgba(0,0,0,0.2);
+  box-shadow:0px 2px 2px rgba(0,0,0,0.2);
+  -ms-filter:"progid:DXImageTransform.Microsoft.dropshadow(OffX=0,OffY=2,Color=#33000000,Positive=true)";
+filter:progid:DXImageTransform.Microsoft.dropshadow(OffX=0,OffY=2,Color=#33000000,Positive=true);
+}
+
+.button:active {
+  margin-top: 2px;
+  margin-bottom: 13px;
+
+ -moz-box-shadow:0px 1px 0px rgba(255,255,255,0.5);
+-webkit-box-shadow:0px 1px 0px rgba(255,255,255,0.5);
+box-shadow:0px 1px 0px rgba(255,255,255,0.5);
+-ms-filter:"progid:DXImageTransform.Microsoft.dropshadow(OffX=0,OffY=1,Color=#ccffffff,Positive=true)";
+filter:progid:DXImageTransform.Microsoft.dropshadow(OffX=0,OffY=1,Color=#ccffffff,Positive=true);
+}
+.button.orange {
+  background: #FF7F00;
+}
+
+.logo{
+float:right;
+}
+
+{% endblock %}
+
+
+{% block head %}Result{% endblock %}
+	
+{% block content %}
+
+
+<ul class="topnav">
+<li><a  href="/">Home</a></li>
+  <li><a href="/tweets/?query={{query}}">Tweets</a></li>
+  <li><a href="/news/?query={{query}}">News</a></li>
+  <li><a class="active" href="/videos/?query={{query}}">Videos</a></li>
+  <li><a href="/wiki/?query={{query}}">Wiki</a></li>
+ 
+<li id="left"><a href="/accounts/logout">Logout</a></li>
+<li id="left"><p><strong>Hello {{user.username}}!</strong></p></li>
+<li id="image"><a href="http://www.facebook.com/{{user.socialaccount_set.all.0.uid}}"><img height=40px width=40px src="{{user.socialaccount_set.all.0.get_avatar_url}}" /></a></li>
+</ul>
+
+
+<table id="videos">
+
+<tr>
+<td colspan=2>
+<p class="title">
+<a href="http://www.youtube.com"><img src="/static/other/youtube.png" height=70px width=70px /></a>
+{{query}}
+</p>
+</td>
+</tr>
+
+{% for video in videos %}
+<tr>
+<td data-th="thumbnail"><img src={{video.thumbnail}}></td>
+<td data-th="title">{{video.title}} </br>
+<a class="logo" href="https://www.facebook.com/sharer/sharer.php?u=https://www.youtube.com/watch/{{video.id}}" target="_blank">
+<img height=30px width=30px src="/static/other/fblogo.png" alt="Facebook" />
+</a>
+<a class="button orange" href="/download/?id={{video.id}}" >download</a>
+<a class="button" href="#" onclick="boomLightBoxShow('divStatic{{video.id}}');">watch</a>
+
+<div id="divStatic{{video.id}}" class="boom-lightbox" style="display: none;" >
+<center>
+<iframe id="ytplayer" width="700px" height="400px" src="https://www.youtube.com/embed/{{video.id}}"  ></iframe>
+</center>
+</div>
+
+<script type="text/javascript">
+    	 (function() { 
+            boomLightBoxInit([{
+                selector: 'divStatic{{video.id}}',
+            configs: { width: '750px', height: '450px' }
+            }]);
+})();
+    </script>
+</td>  
+</tr>
+{% endfor %}
+</table>  
+
+
+{% endblock %}

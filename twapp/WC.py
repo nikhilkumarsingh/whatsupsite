@@ -2,15 +2,13 @@ import os
 from os import path
 from PIL import Image
 import numpy as np
-import matplotlib.pyplot as plt
 from wordcloud import WordCloud, STOPWORDS
 
 
 
-
-def wcloud(text,mask,query):
+def wcloud(text,query):
      os.chdir('C:\\mysite1\\twapp\\static\\')
-     mask = np.array(Image.open(os.getcwd() + '\\masks\\'+ mask))
+     mask = np.array(Image.open(os.getcwd() + '\\masks\\circle.png'))
      stopwords = set(STOPWORDS)
      stopwords.add(query)
      wc = WordCloud(background_color="white",

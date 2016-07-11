@@ -2,11 +2,22 @@
 
 {% block head%}Home{% endblock %}
 
-{% block content %}
-<p>{{mask}}</p>
-<img  id="title" src="/static/other/heading2.png "   alt=TWEESTER >
+{% block style %}
+{% endblock %}
 
-<form id="searchbox" method="get" action="/search/">
+
+{% block content %}
+<ul class="topnav">
+<li><a class="active"  href="/">Home</a></li>
+<li><a href="/about">About</a></li>
+<li id="left"><a href="/accounts/logout">Logout</a></li>
+<li id="left"><p><strong>Hello {{user.username}}!</strong></p></li>
+<li id="image"><a href="http://www.facebook.com/{{user.socialaccount_set.all.0.uid}}"><img height=40px width=40px src="{{user.socialaccount_set.all.0.get_avatar_url}}" /></a></li>
+</ul>
+
+
+
+<form id="searchbox" method="get" action="/tweets/">
     <input id="search" type="text" placeholder="Type here" name="query">
     <input id="submit" type="submit" value="Search">
 </form>

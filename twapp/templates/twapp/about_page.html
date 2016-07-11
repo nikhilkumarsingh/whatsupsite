@@ -1,0 +1,43 @@
+{% extends "base.html" %}
+
+{% block head%}About{% endblock %}
+
+{% block style %}
+#about {
+    margin: 20 auto;
+    font-family: Georgia, serif;
+    font-size:1.5em;
+    line-spacing:10px;
+    color:#f28909;
+    border-collapse: collapse;
+    width: 60%;
+}
+
+#about td {
+    border: 1px solid #ddd;
+    padding: 8px;
+}
+
+#about tr{background-color: #f2f2f2;}
+
+{% endblock %}
+
+
+{% block content %}
+
+<ul class="topnav">
+<li><a  href="/">Home</a></li>
+ <li><a class="active" href="/about">About</a></li>
+<li id="left"><a href="/accounts/logout">Logout</a></li>
+<li id="left"><p><strong>Hello {{user.username}}!</strong></p></li>
+<li id="image"><a href="http://www.facebook.com/{{user.socialaccount_set.all.0.uid}}"><img height=40px width=40px src="{{user.socialaccount_set.all.0.get_avatar_url}}" /></a></li>
+</ul>
+
+<table id="about">
+<tr>
+<td>
+Hi there, {{user.username}}!</br></br>What's up?</br></br>This website is dedicated to all the pantomaths out there! If you are using this website, you are never short of daily dose of information about your favourite topic as you get to see the best of all worlds! We provide you top trending tweets, latest news, latest youtube videos plus some wikipedia summary for your quick reference!</br></br>And guess what, you can share all these links to facebook with a single click!</br></br>So what are you waiting for? Go on and explore!
+</td>
+</tr>
+</table>
+{% endblock %}

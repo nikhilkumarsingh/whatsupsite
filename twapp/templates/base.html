@@ -1,50 +1,8 @@
+<html>
 {% load staticfiles %}
-<link rel="stylesheet" type="text/css" href="{% static 'style.css' %}" />
-<link href="https://fonts.googleapis.com/css?family=Abril+Fatface" rel="stylesheet">
-<link href="https://fonts.googleapis.com/css?family=Calligraffitti" rel="stylesheet"> 
-<link href="https://fonts.googleapis.com/css?family=Montez" rel="stylesheet">
 
 <style type="text/css">
-
-img#title {
-    display: block;
-    margin: 150px auto 50px;
-    width: 40%;
-}
-
-img#result{
-  display:block;
-  border-radius: 35px; 
-  align:center;
-  margin: 0px auto 0px;
-  width:50%;
-}
-
-#options
-{
-align:center;
-}
-
-img#download {
-    display:inline;
-    float:right;
-    width: 25%;
-}
-
-img#goback{
-display:inline;
-float:left;
-width: 25%;
-}
-
-h1{
-font-family: 'Montez', cursive;
-font-size:500%;
-text-align:center;  
-background: linear-gradient(330deg, #e05252 0%, #99e052 25%, #52e0e0 50%, #9952e0 75%, #e05252 100%);
-	-webkit-background-clip: text;
-	-webkit-text-fill-color: transparent;
-}
+{% block style %}{% endblock %}
 
 html { 
   background: url('{% static "background/5.jpg" %}') no-repeat center center fixed; 
@@ -52,6 +10,74 @@ html {
   -moz-background-size: cover;
   -o-background-size: cover;
   background-size: cover;
+margin:0 !important;
+padding:0 !important;
+}
+
+body{
+margin:0px 0px 0px 0px !important;
+padding:0 !important;
+bottom:0px;
+}
+
+
+header{
+  margin:0 !important;
+  padding:5px;
+    background-color:#f4e90b;
+    color:#00aced;
+    text-align:left;
+  
+}
+
+
+ul.topnav {
+    list-style-type: none;
+    padding: 0;
+    overflow: hidden;
+    border: 1px solid #e7e7e7;
+    background-color: #f3f3f3;
+margin:0;
+}
+
+ul.topnav li#left,li#image{
+float:right;
+}
+
+ul.topnav li#image a {
+    display: inline;
+    color: #666;
+    text-align: center;
+    padding:0px;
+    text-decoration: none;
+}
+ul.topnav li#left p{
+    display: block;
+    color: #666;
+    text-align: center;
+    padding: 0px 5px;
+    text-decoration: none;
+}
+
+ul.topnav li {
+    float: left;
+}
+
+ul.topnav li a{
+    display: block;
+    color: #666;
+    text-align: center;
+    padding: 14px 16px;
+    text-decoration: none;
+}
+
+ul.topnav li a:hover:not(.active) {
+    background-color: #ddd;
+}
+
+ul.topnav li a.active {
+    color: white;
+    background-color: #00aced;
 }
 
 #searchbox
@@ -71,8 +97,7 @@ html {
     overflow: hidden; /* Clear floats */
 }
 
-#search, 
-#submit {
+#search, #submit {
     float: left;
 }
 
@@ -117,18 +142,51 @@ html {
 display:inline;
 margin:auto;
 }  
+
+.title{
+font-size:200%;
+color:black;
+}
+
+#footer{
+    background-color:black;
+    color:white;
+    text-align:center;
+    padding:5px;
+   bottom:0px;
+   position:fixed;
+
+}
+
+.site_heading{
+font-family: 'Poiret One', cursive;
+font-size:200%;
+font-weight:bold;
+}
 </style>
 
-<html>
+
 
 <head>
+<link rel="stylesheet" type="text/css" href="/static/css/boom-lightbox/boom-lightbox.1.0.0.min.css" />
+<script type="text/javascript" src="/static/js/boom-lightbox/boom-lightbox.1.0.0.min.js"></script>
+<link href="https://fonts.googleapis.com/css?family=Poiret+One" rel="stylesheet">
+
 <title>Tweester |
 {% block head %}
 {% endblock %}</title>
 </head>
 
 <body>
+
+<header>
+<h1 class="site_heading">What's up?</h1>
+</header>
+
+
 {% block content %}
 {% endblock %}
+
 </body>
+
 </html>

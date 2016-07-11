@@ -1,0 +1,112 @@
+{% extends 'base.html' %}
+{% block head%}Wiki{% endblock %}
+{% block style %}
+#wiki {
+    margin: 20 auto;
+    font-family: Georgia, serif;
+    line-spacing:10px;
+    color:#f28909;
+    border-collapse: collapse;
+    width: 60%;
+}
+
+#wiki td {
+    border: 1px solid #ddd;
+    padding: 8px;
+}
+
+#wiki tr{background-color: #f2f2f2;}
+
+#wiki tr:hover {background-color: #ddd;}
+
+.button {
+  float:right;
+  display: inline-block;
+  height: 25px;
+  line-height: 20px;
+  padding-right: 15px;
+  padding-left: 15px;
+  position: relative;
+  background-color:rgb(41,127,184);
+  color:rgb(255,255,255);
+  text-decoration: none;
+  text-transform: uppercase;
+  
+  
+  border-radius: 5px;
+  -moz-border-radius: 5px;
+  -webkit-border-radius: 5px;
+  text-shadow:0px 1px 0px rgba(0,0,0,0.5);
+-ms-filter:"progid:DXImageTransform.Microsoft.dropshadow(OffX=0,OffY=1,Color=#ff123852,Positive=true)";zoom:1;
+filter:progid:DXImageTransform.Microsoft.dropshadow(OffX=0,OffY=1,Color=#ff123852,Positive=true);
+
+  -moz-box-shadow:0px 2px 2px rgba(0,0,0,0.2);
+  -webkit-box-shadow:0px 2px 2px rgba(0,0,0,0.2);
+  box-shadow:0px 2px 2px rgba(0,0,0,0.2);
+  -ms-filter:"progid:DXImageTransform.Microsoft.dropshadow(OffX=0,OffY=2,Color=#33000000,Positive=true)";
+filter:progid:DXImageTransform.Microsoft.dropshadow(OffX=0,OffY=2,Color=#33000000,Positive=true);
+}
+
+.button:active {
+  margin-top: 2px;
+  margin-bottom: 13px;
+
+ -moz-box-shadow:0px 1px 0px rgba(255,255,255,0.5);
+-webkit-box-shadow:0px 1px 0px rgba(255,255,255,0.5);
+box-shadow:0px 1px 0px rgba(255,255,255,0.5);
+-ms-filter:"progid:DXImageTransform.Microsoft.dropshadow(OffX=0,OffY=1,Color=#ccffffff,Positive=true)";
+filter:progid:DXImageTransform.Microsoft.dropshadow(OffX=0,OffY=1,Color=#ccffffff,Positive=true);
+}
+
+.logo{
+float:right;
+}
+
+{% endblock %}
+
+
+{% block content %}
+
+<ul class="topnav">
+<li><a  href="/">Home</a></li>
+  <li><a href="/tweets/?query={{query}}">Tweets</a></li>
+  <li><a href="/news/?query={{query}}">News</a></li>
+  <li><a href="/videos/?query={{query}}">Videos</a></li>
+  <li><a class="active" href="/wiki/?query={{query}}">Wiki</a></li>
+
+<li id="left"><a href="/accounts/logout">Logout</a></li>
+<li id="left"><p><strong>Hello {{user.username}}!</strong></p></li>
+<li id="image"><a href="http://www.facebook.com/{{user.socialaccount_set.all.0.uid}}"><img height=40px width=40px src="{{user.socialaccount_set.all.0.get_avatar_url}}" /></a></li>
+</ul>
+
+
+<table id="wiki">
+<tr>
+<td>
+<p class="title">
+<a href="http://wikipedia.org">
+<img height=70px width=70px  src="/static/other/Wikipedialogo.png"></a>
+{{wpage.title}}</p>
+</td>
+</tr>
+
+<tr>
+<td align="center">
+<a href="{{wpage.image}}" ><img  src="{{wpage.image}}" ></a>
+</td>
+</tr>
+
+<tr>
+<td>
+</br>
+{{wpage.summary}}
+</br>
+<a class="logo" href="https://www.facebook.com/sharer/sharer.php?u=http://wikipedia.org/wiki/{{wpage.title}}" target="_blank">
+<img height=30px width=30px src="/static/other/fblogo.png" alt="Facebook" />
+</a>
+<a class="button" href="http://wikipedia.org/wiki/{{wpage.title}}" >Read full page at wikipedia</a>
+</td>
+</tr>
+</table>
+
+{% endblock %}

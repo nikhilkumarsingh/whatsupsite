@@ -10,7 +10,7 @@ access_token_secret='YY943k0KMeQwQT0CeisR7A6X42Mwr3JVxjnFJ7bDMMiGb'
 
 def search_twitter(query):
    api = twitter.Api(consumer_key=consumer_key,consumer_secret=consumer_secret, access_token_key=access_token_key, access_token_secret=access_token_secret) 
-   tweets=api.GetSearch(query,count=150,lang="en")
+   tweets=api.GetSearch(query,count=75,lang="en")
    tw=[]
    for tweet in tweets:
      tw.append(tweet.text)
@@ -23,5 +23,6 @@ def search_twitter(query):
 
    words = re.sub("[^a-zA-Z]+", " ", words)
    words=words.replace("amp","")
-   return words
-   
+   return words,tweets
+
+
