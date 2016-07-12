@@ -2,10 +2,10 @@ import twitter
 import re
 
 
-consumer_key='WXrRsb0WBiqw2JefGzdbI15jZ'
-consumer_secret='XlhjVbue1rXVyzPpo4ywEDURGtQLgF1kdLPM1PmByuyDPrdqTL'
-access_token_key='749944468212625408-4Bw8QR9IMCMKDIBCIOexGWcxVLvqUAY'
-access_token_secret='YY943k0KMeQwQT0CeisR7A6X42Mwr3JVxjnFJ7bDMMiGb'
+consumer_key=
+consumer_secret=
+access_token_key=
+access_token_secret=
 
 
 def search_twitter(query):
